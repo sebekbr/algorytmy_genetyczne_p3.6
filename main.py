@@ -14,5 +14,3 @@ B = np.array([10,2,-5,3,6,-2,-4,9])
 print('matrix A\n', A)
 
 print(np.linalg.det(A))
-
-rownanie = 1*a + 2*b + -1*c
