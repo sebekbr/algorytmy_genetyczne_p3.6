@@ -9,10 +9,10 @@ A = np.array([[1,2,-1,3,-4,-1,-2,2],
              [4,5,8,-1,-6,2,2,-5],
              [-2,2,1,6,1,-4,-5,2]], dtype = np.float)
 
-# B = np.array([10,2,-5,3,6,-2,-4,9], dtype = np.float)
-#
-# #print('matrix A\n', A)
-# #print(np.linalg.det(A))
+B = np.array([10,2,-5,3,6,-2,-4,9], dtype = np.float)
+
+#print('matrix A\n', A)
+#print(np.linalg.det(A))
 # x = np.linalg.solve(A,B) # najszybsza metoda znalezienia rozwiązania,
 # print(x)                 # która daje spodziewany wynik
 
