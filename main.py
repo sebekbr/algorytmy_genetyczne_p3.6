@@ -31,5 +31,13 @@ B = np.array([10,2,-5,3,6,-2,-4,9], dtype = np.float)
 
 population=[[1,2,-1,3,-4,-1,-2,2],[-3,-1,2,-3,4,-5,-2,-1],[1,-3,9,2,-8,3,-2,7],[2,-1,6,2,3,6,-9,-1],
              [3,1,4,-5,-5,1,3,-4],[2,-2,2,2,4,-9,-2,4],[4,5,8,-1,-6,2,2,-5],[-2,2,1,6,1,-4,-5,2]]
+fitness_score = [10,2,-5,3,6,-2,-4,9]
+totalfitness = sum([10,2,-5,3,6,-2,-4,9])
+score_card = []
+#grupowanie wyników z osobnikami populacji
+for i in range(8):
+    for j in range(8):
+        score_card.append(fitness_score[j])
+        score_card.append(population[j])
 
-fitness_score = sum([10,2,-5,3,6,-2,-4,9])
+print(score_card)
