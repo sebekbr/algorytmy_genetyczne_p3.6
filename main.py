@@ -1,5 +1,6 @@
 # Sebastian Brodziak - algorytmy genetyczne v0.2
 import random
+import numpy
 
 # populacja
 population = [[1, 2, -1, 3, -4, -1, -2, 2],
@@ -32,4 +33,6 @@ for i in range(8):
 print('Wartosc abs(b-br):\n', sum(b_minus_br))
 
 # macierz współczynników losowych a o wymiarze 20x8
+matrix = numpy.random.randint(-10, 10, size=(20, 8), dtype='l')
+print(matrix)
 
