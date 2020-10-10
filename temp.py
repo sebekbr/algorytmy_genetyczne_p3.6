@@ -18,3 +18,14 @@
 #     multi.append(a[i]*x[i])
 #
 # print(multi)
+
+# grupowanie wyników z osobnikami populacji
+# score_card = []
+# for i in range(8):
+#     for j in range(8):
+#         score_card.append(population[j])
+#         score_card.append(br[j])
+#
+# # miejsce podziału genomu
+# crossover_point = 4
+# print('Wartosc score_card:\n', score_card)

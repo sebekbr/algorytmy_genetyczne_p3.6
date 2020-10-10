@@ -25,16 +25,8 @@ print('Wartość b:\n', b)
 
 br = [10, 2, -5, 3, 6, -2, -4, 9]
 
-total_br = sum([10, 2, -5, 3, 6, -2, -4, 9])
-print('Wartosc total_br:\n', total_br)
-
-# grupowanie wyników z osobnikami populacji
-score_card = []
+b_minus_br = []
 for i in range(8):
-    for j in range(8):
-        score_card.append(population[j])
-        score_card.append(br[j])
+    b_minus_br.append(abs(b[i] - br[i]))
 
-# miejsce podziału genomu
-crossover_point = 4
-print('Wartosc score_card:\n', score_card)
+print('Wartosc abs(b-br):\n', sum(b_minus_br))
