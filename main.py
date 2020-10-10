@@ -30,3 +30,6 @@ for i in range(8):
     b_minus_br.append(abs(b[i] - br[i]))
 
 print('Wartosc abs(b-br):\n', sum(b_minus_br))
+
+# macierz współczynników losowych a o wymiarze 20x8
+
