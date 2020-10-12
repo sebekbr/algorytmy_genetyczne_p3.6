@@ -1,4 +1,4 @@
-# Sebastian Brodziak - algorytmy genetyczne v0.2
+# Sebastian Brodziak - algorytmy genetyczne v0.3
 import random
 import numpy
 
