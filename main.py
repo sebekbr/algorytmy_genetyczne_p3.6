@@ -42,6 +42,7 @@ matrix = np.array([[2, -5, 3, 2, 5, 9, -10, 1],
     [-10, -2, -6, -9, 8, -9, 5, -6],
     [0, -5, 0, 2, 5, 9, -10, 1]])
 
+# obliczanie wsp_dos i wpisywanie do macierzy
 wsp_dos = []
 for i in range(len(matrix)):
     test = np.multiply(matrix[i], population)
@@ -49,3 +50,5 @@ for i in range(len(matrix)):
     wsp_dos.append(sum(abs(b - br)))
 
 print(wsp_dos)
+
+# krzyżowanie
