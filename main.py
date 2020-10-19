@@ -14,25 +14,8 @@ population = np.array([
     [4, 5, 8, -1, -6, 2, 2, -5],
     [-2, 2, 1, 6, 1, -4, -5, 2]])
 
-a = [2, -5, 3, 2, 5, 9, -10, 1]
-
-# Obliczanie b
-b = []
-for subl in population:
-    temp = []
-    for i in range(len(subl)):
-        temp.append(subl[i] * a[i])
-    b.append(sum(temp))
-
-print('Wartość b:\n', b)
-
+# a = np.array([2, -5, 3, 2, 5, 9, -10, 1])
 br = np.array([10, 2, -5, 3, 6, -2, -4, 9])
-
-b_minus_br = []
-for i in range(8):
-    b_minus_br.append(abs(b[i] - br[i]))
-
-print('Wartosc abs(b-br):\n', sum(b_minus_br))
 
 # macierz współczynników losowych a o wymiarze 20x8
 # matrix = numpy.random.randint(-10, 10, size=(20, 8), dtype='l')
@@ -59,14 +42,10 @@ matrix = np.array([[2, -5, 3, 2, 5, 9, -10, 1],
     [-10, -2, -6, -9, 8, -9, 5, -6],
     [0, -5, 0, 2, 5, 9, -10, 1]])
 
-wsp_dos = [389, 327, 502, 408, 450, 444, 469, 452, 302, 534, 376, 431, 416, 274, 555, 335, 488, 412, 785, 398]
-
-print("Wersja z numpy")
-
-wsp_dos_temp = []
+wsp_dos = []
 for i in range(len(matrix)):
     test = np.multiply(matrix[i], population)
     b = np.sum(test, axis=1)
-    wsp_dos_temp.append(sum(abs(b - br)))
+    wsp_dos.append(sum(abs(b - br)))
 
-print(wsp_dos_temp)
+print(wsp_dos)

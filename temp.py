@@ -29,3 +29,21 @@
 # # miejsce podziału genomu
 # crossover_point = 4
 # print('Wartosc score_card:\n', score_card)
+
+# Obliczanie b
+b = []
+for subl in population:
+    temp = []
+    for i in range(len(subl)):
+        temp.append(subl[i] * a[i])
+    b.append(sum(temp))
+
+print('Wartość b:\n', b)
+
+
+
+b_minus_br = []
+for i in range(8):
+    b_minus_br.append(abs(b[i] - br[i]))
+
+print('Wartosc abs(b-br):\n', sum(b_minus_br))
