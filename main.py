@@ -2,6 +2,7 @@
 import random
 import numpy as np
 
+print("Wersja bez numpy")
 # populacja
 population = np.array([
     [1, 2, -1, 3, -4, -1, -2, 2],
@@ -16,17 +17,16 @@ population = np.array([
 a = [2, -5, 3, 2, 5, 9, -10, 1]
 
 # Obliczanie b
-# b = []
-# for subl in population:
-#     temp = []
-#     for i in range(len(subl)):
-#         temp.append(subl[i] * a[i])
-#     b.append(sum(temp))
-
+b = []
+for subl in population:
+    temp = []
+    for i in range(len(subl)):
+        temp.append(subl[i] * a[i])
+    b.append(sum(temp))
 
 print('Wartość b:\n', b)
 
-br = [10, 2, -5, 3, 6, -2, -4, 9]
+br = np.array([10, 2, -5, 3, 6, -2, -4, 9])
 
 b_minus_br = []
 for i in range(8):
@@ -61,8 +61,12 @@ matrix = np.array([[2, -5, 3, 2, 5, 9, -10, 1],
 
 wsp_dos = [389, 327, 502, 408, 450, 444, 469, 452, 302, 534, 376, 431, 416, 274, 555, 335, 488, 412, 785, 398]
 
-test = np.multiply(population, matrix[0])
-b = np.sum(test, axis=1) # axis=1 - sumowanie wierszy macierzy
+print("Wersja z numpy")
 
+wsp_dos_temp = []
+for i in range(len(matrix)):
+    test = np.multiply(matrix[i], population)
+    b = np.sum(test, axis=1)
+    wsp_dos_temp.append(sum(abs(b - br)))
 
-# print(dzialanie)
+print(wsp_dos_temp)
