@@ -1,8 +1,17 @@
-# Sebastian Brodziak - algorytmy genetyczne v0.3
+# Sebastian Brodziak - algorytmy genetyczne v0.4
+
+# wylicz współczynniki dostosowania DONE
+# TODO - posortuj populację po współczynniku dost.
+# TODO - sprawdz czy masz trafienie
+# TODO - usuń najgorszych
+# TODO - krzyżuj
+# TODO - mutuj
+# TODO - ew. dodaj nowych (jak usunąłeś wcześniej)
+# TODO - wylicz dodatkowe jak brakuje
+
 import random
 import numpy as np
 
-print("Wersja bez numpy")
 # populacja
 population = np.array([
     [1, 2, -1, 3, -4, -1, -2, 2],
@@ -49,6 +58,10 @@ for i in range(len(matrix)):
     b = np.sum(test, axis=1)
     wsp_dos.append(sum(abs(b - br)))
 
-print(wsp_dos)
+# sortowanie
+sorted_matrix = np.array([x for _, x in sorted(zip(wsp_dos,matrix))])
+print(sorted_matrix)
 
 # krzyżowanie
+# punkt krzyżowania
+# int(len(matrix[0])/2)
