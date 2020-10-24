@@ -1,7 +1,6 @@
 # Sebastian Brodziak - algorytmy genetyczne v0.4
 
-# wylicz współczynniki dostosowania DONE
-# TODO - posortuj populację po współczynniku dost.
+# wylicz współczynniki dostosowania DONE.
 # TODO - sprawdz czy masz trafienie
 # TODO - usuń najgorszych
 # TODO - krzyżuj
