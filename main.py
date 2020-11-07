@@ -1,7 +1,7 @@
 # Sebastian Brodziak - algorytmy genetyczne v0.4
 
 # wylicz współczynniki dostosowania DONE.
-# TODO - sprawdz czy masz trafienie
+# TODO - sprawdz czy masz trafienie ( <0.5)
 # TODO - usuń najgorszych
 # TODO - krzyżuj
 # TODO - mutuj
@@ -22,12 +22,7 @@ population = np.array([
     [4, 5, 8, -1, -6, 2, 2, -5],
     [-2, 2, 1, 6, 1, -4, -5, 2]])
 
-# a = np.array([2, -5, 3, 2, 5, 9, -10, 1])
 br = np.array([10, 2, -5, 3, 6, -2, -4, 9])
-
-# macierz współczynników losowych a o wymiarze 20x8
-# matrix = numpy.random.randint(-10, 10, size=(20, 8), dtype='l')
-# print(matrix)
 
 matrix = np.array([[2, -5, 3, 2, 5, 9, -10, 1],
     [-6, 4, -4, -4, -1, 10, 1, -2],
@@ -59,8 +54,14 @@ for i in range(len(matrix)):
 
 # sortowanie
 sorted_matrix = np.array([x for _, x in sorted(zip(wsp_dos,matrix))])
-print(sorted_matrix)
 
 # krzyżowanie
 # punkt krzyżowania
-# int(len(matrix[0])/2)
+index = int(len(matrix[0])/2)
+
+temp_array = []
+# temp_array.append(np.array(sorted_matrix[0][:index]))
+# temp_array.append(np.array(sorted_matrix[1][index:]))
+#
+# print(np.array(temp_array))
+

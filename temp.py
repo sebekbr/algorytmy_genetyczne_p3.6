@@ -47,3 +47,18 @@ for i in range(8):
     b_minus_br.append(abs(b[i] - br[i]))
 
 print('Wartosc abs(b-br):\n', sum(b_minus_br))
+
+
+# def crossover(a, b, index):
+#     return b[:index] + a[index:], a[:index] + b[index:]
+#
+#
+# def test_crossover():
+#     a = sorted_matrix
+#     b = sorted_matrix
+#     population = [a, b]
+#     population += crossover(a, b, index)
+#     return population
+#
+#
+# print(test_crossover())
