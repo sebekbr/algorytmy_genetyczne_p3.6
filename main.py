@@ -1,6 +1,4 @@
-# Sebastian Brodziak - algorytmy genetyczne v0.4
-
-# wylicz współczynniki dostosowania DONE.
+# Sebastian Brodziak - algorytmy genetyczne
 # TODO - sprawdz czy masz trafienie ( <0.5)
 # TODO - usuń najgorszych
 # TODO - krzyżuj
@@ -49,7 +47,7 @@ matrix = np.array([[2, -5, 3, 2, 5, 9, -10, 1],
 wsp_dos = []
 for i in range(len(matrix)):
     test = np.multiply(matrix[i], population)
-    b = np.sum(test, axis=1)
+    b = np.sum(test, axis=1) # sumowanie wiersza
     wsp_dos.append(sum(abs(b - br)))
 
 # sortowanie
@@ -58,10 +56,3 @@ sorted_matrix = np.array([x for _, x in sorted(zip(wsp_dos,matrix))])
 # krzyżowanie
 # punkt krzyżowania
 index = int(len(matrix[0])/2)
-
-temp_array = []
-# temp_array.append(np.array(sorted_matrix[0][:index]))
-# temp_array.append(np.array(sorted_matrix[1][index:]))
-#
-# print(np.array(temp_array))
-
