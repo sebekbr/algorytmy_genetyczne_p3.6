@@ -55,4 +55,13 @@ sorted_matrix = np.array([x for _, x in sorted(zip(wsp_dos,matrix))])
 
 # krzyżowanie
 # punkt krzyżowania
-index = int(len(matrix[0])/2)
+cross_point = int(len(matrix[0])/2)
+
+
+def cross():
+    crossed = []
+    for i in range(0, len(sorted_matrix)-1, 2):
+        crossed.append(np.append(sorted_matrix[i][:cross_point],sorted_matrix[i+1][cross_point:]))
+        crossed.append(np.append(sorted_matrix[i+1][:cross_point],sorted_matrix[i][cross_point:]))
+    return np.array(crossed)
+
