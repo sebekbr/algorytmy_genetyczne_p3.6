@@ -23,7 +23,7 @@
 # score_card = []
 # for i in range(8):
 #     for j in range(8):
-#         score_card.append(population[j])
+#         score_card.append(constant_population[j])
 #         score_card.append(br[j])
 #
 # # miejsce podziału genomu
@@ -52,5 +52,5 @@ print('Wartosc abs(b-br):\n', sum(b_minus_br))
 # sortowanie
 # def sort():
 #     sorted_matrix = []
-#     for _, x in sorted(zip(wsp_dos,matrix)):
+#     for _, x in sorted(zip(wsp_dos,constant_matrix)):
 #         sorted_matrix.append(np.array(x))
