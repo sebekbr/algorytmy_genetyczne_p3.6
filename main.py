@@ -1,12 +1,13 @@
 # Sebastian Brodziak - algorytmy genetyczne
+# wylicz wspolczynniki dostosowania
+# posortuj wg wspolczynnika
 # TODO - sprawdz czy masz trafienie ( <0.5)
 # TODO - usuń najgorszych
-# TODO - krzyżuj
+# krzyzuj
 # TODO - mutuj
 # TODO - ew. dodaj nowych (jak usunąłeś wcześniej)
 # TODO - wylicz dodatkowe jak brakuje
 
-import random
 import numpy as np
 
 # populacja
@@ -47,13 +48,15 @@ matrix = np.array([[2, -5, 3, 2, 5, 9, -10, 1],
 wsp_dos = []
 for i in range(len(matrix)):
     test = np.multiply(matrix[i], population)
-    b = np.sum(test, axis=1) # sumowanie wiersza
+    # sumowanie wiersza
+    b = np.sum(test, axis=1)
     wsp_dos.append(sum(abs(b - br)))
 
-# sortowanie
-sorted_matrix = np.array([x for _, x in sorted(zip(wsp_dos,matrix))])
 
-# krzyżowanie
+sorted_matrix = np.array([y for x, y in sorted(zip(wsp_dos, matrix))])
+
+
+# KRZYŻOWANIE
 # punkt krzyżowania
 cross_point = int(len(matrix[0])/2)
 
@@ -61,7 +64,9 @@ cross_point = int(len(matrix[0])/2)
 def cross():
     crossed = []
     for i in range(0, len(sorted_matrix)-1, 2):
-        crossed.append(np.append(sorted_matrix[i][:cross_point],sorted_matrix[i+1][cross_point:]))
-        crossed.append(np.append(sorted_matrix[i+1][:cross_point],sorted_matrix[i][cross_point:]))
+        crossed.append(np.append(sorted_matrix[i][:cross_point], sorted_matrix[i+1][cross_point:]))
+        crossed.append(np.append(sorted_matrix[i+1][:cross_point], sorted_matrix[i][cross_point:]))
     return np.array(crossed)
+
+print(cross())
 

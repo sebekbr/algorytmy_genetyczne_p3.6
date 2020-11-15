@@ -49,36 +49,8 @@ for i in range(8):
 print('Wartosc abs(b-br):\n', sum(b_minus_br))
 
 
-# def crossover(a, b, index):
-#     return b[:index] + a[index:], a[:index] + b[index:]
-#
-#
-# def test_crossover():
-#     a = sorted_matrix
-#     b = sorted_matrix
-#     population = [a, b]
-#     population += crossover(a, b, index)
-#     return population
-#
-#
-# print(test_crossover())
-
-
-def crossover():
-    global parents
-
-    cross_point = int(len(matrix[0])/2)
-    parents = parents + tuple([(parents[0][0:cross_point + 1] + parents[1][cross_point + 1:6])])
-    parents = parents + tuple([(parents[1][0:cross_point + 1] + parents[0][cross_point + 1:6])])
-
-    print(parents)
-
-
-# def first_half():
-#     for i in range(len(matrix)):
-#         print(matrix[i][:cross_point])
-#
-#
-# def second_half():
-#     for i in range(len(matrix)):
-#         print(matrix[i][cross_point:])
+# sortowanie
+# def sort():
+#     sorted_matrix = []
+#     for _, x in sorted(zip(wsp_dos,matrix)):
+#         sorted_matrix.append(np.array(x))
