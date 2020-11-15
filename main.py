@@ -9,6 +9,7 @@
 # TODO - wylicz dodatkowe jak brakuje
 
 import numpy as np
+import random as rand
 
 # populacja
 constant_population = np.array([
@@ -21,7 +22,9 @@ constant_population = np.array([
     [4, 5, 8, -1, -6, 2, 2, -5],
     [-2, 2, 1, 6, 1, -4, -5, 2]])
 
+
 population = np.random.randint(-10, 10, size=(8,8))
+
 
 br = np.array([10, 2, -5, 3, 6, -2, -4, 9])
 
@@ -50,6 +53,10 @@ constant_matrix = np.array([[2, -5, 3, 2, 5, 9, -10, 1],
 
 matrix = np.random.randint(-10, 10, size=(20,8))
 
+
+# muted = []
+
+
 # obliczanie wsp_dos i wpisywanie do macierzy
 wsp_dos = []
 for i in range(len(constant_matrix)):
@@ -63,16 +70,13 @@ sorted_matrix = np.array([y for x, y in sorted(zip(wsp_dos, constant_matrix))])
 
 
 # KRZYŻOWANIE
-# punkt krzyżowania
-cross_point = int(len(constant_matrix[0]) / 2)
-
-
 def cross():
+    # punkt krzyżowania
+    cross_point = int(len(constant_matrix[0]) / 2)
+
     crossed = []
     for i in range(0, len(sorted_matrix)-1, 2):
         crossed.append(np.append(sorted_matrix[i][:cross_point], sorted_matrix[i+1][cross_point:]))
         crossed.append(np.append(sorted_matrix[i+1][:cross_point], sorted_matrix[i][cross_point:]))
     return np.array(crossed)
 
-# print(cross())
-print(matrix)
