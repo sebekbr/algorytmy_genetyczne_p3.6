@@ -22,7 +22,7 @@ constant_population = np.array([
     [4, 5, 8, -1, -6, 2, 2, -5],
     [-2, 2, 1, 6, 1, -4, -5, 2]])
 
-population = np.random.randint(-10, 10, size=(8,8))
+population = np.random.randint(-10, 10, size=(8, 8))
 
 br = np.array([10, 2, -5, 3, 6, -2, -4, 9])
 
@@ -47,9 +47,9 @@ constant_matrix = np.array([[2, -5, 3, 2, 5, 9, -10, 1],
                    [-10, -2, -6, -9, 8, -9, 5, -6],
                    [0, -5, 0, 2, 5, 9, -10, 1]])
 
-matrix = np.random.randint(-10, 10, size=(20,8))
-print(matrix)
-print("----------------------------------")
+matrix = np.random.randint(-10, 10, size=(20, 8))
+# print(matrix)
+# print("----------------------------------")
 
 # muted = []
 
@@ -65,13 +65,13 @@ def wsp_dost():
     return np.array(wsp_dos)
 
 
-print(wsp_dost())
-print("----------------------------------")
+# print(wsp_dost())
+# print("----------------------------------")
 
 sorted_matrix = np.array([y for x, y in sorted(zip(wsp_dost(), matrix))])
 
-print(sorted_matrix)
-print("----------------------------------")
+# print(sorted_matrix)
+# print("----------------------------------")
 
 # KRZYŻOWANIE
 def cross():
