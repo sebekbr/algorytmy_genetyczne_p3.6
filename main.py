@@ -88,22 +88,19 @@ def cross():
 print(cross())
 print(("--------------------------------"))
 
-# Mutowanie - DO POPRAWY!!!!!
-crossed = cross()
-randomIndex = rand.randint(0, len(crossed[0])-1)
-randomIndex2 = rand.randint(0, len(crossed[0])-1)
-randomValue = rand.randint(-10, 10)
-print("index 1: ", randomIndex)
-print("index 2: ", randomIndex2)
-print("random value: ", randomValue)
-print(crossed[19][randomIndex2])
-# crossed[19].pop(randomIndex2)
-# crossed[19].insert(randomIndex2, randomValue)
+# Mutation
+def mutation():
+    crossed = cross()
+    random_index = rand.randint(0, len(crossed[0])-1)
+    random_index2 = rand.randint(0, len(crossed[0])-1)
+    random_value = rand.randint(-10, 10)
+    # print("index 1: ", random_index)
+    # print("index 2: ", random_index2)
+    # print("random value: ", randomValue)
+    # Deleting item
+    mod_arr = np.delete(crossed[19], random_index2)
+    # Inserting item
+    mod_arr = np.insert(mod_arr, random_index2, random_value)
+    return mod_arr
 
-
-mod_arr = np.delete(crossed[19], np.where(crossed[19] == randomIndex2))
-
-mod_arr = np.insert(mod_arr, randomIndex2, randomValue)
-# szybszy sposob
-# np.concatenate(mod_arr[:randomIndex2], randomValue, mod_arr[randomIndex2:])
-print(mod_arr)
+print(mutation())
