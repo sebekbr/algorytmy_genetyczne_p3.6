@@ -22,6 +22,7 @@ constant_population = np.array([
     [4, 5, 8, -1, -6, 2, 2, -5],
     [-2, 2, 1, 6, 1, -4, -5, 2]])
 
+# Populacja z wartościami losowymi
 population = np.random.randint(-10, 10, size=(8, 8))
 
 br = np.array([10, 2, -5, 3, 6, -2, -4, 9])
@@ -47,9 +48,8 @@ constant_matrix = np.array([[2, -5, 3, 2, 5, 9, -10, 1],
                    [-10, -2, -6, -9, 8, -9, 5, -6],
                    [0, -5, 0, 2, 5, 9, -10, 1]])
 
+# Macierz z wartościami losowymi
 matrix = np.random.randint(-10, 10, size=(20, 8))
-# print(matrix)
-# print("----------------------------------")
 
 # obliczanie wsp_dos i wpisywanie do macierzy
 def wsp_dost():
@@ -67,8 +67,6 @@ def wsp_dost():
 
 sorted_matrix = np.array([y for x, y in sorted(zip(wsp_dost(), constant_matrix))])
 
-# print(sorted_matrix)
-# print("----------------------------------")
 
 # punkt krzyżowania
 cross_point = int(len(constant_matrix[0]) / 2)
@@ -83,7 +81,8 @@ def cross():
 
 
 print(cross())
-print(("--------------------------------"))
+print("--------------------------------")
+
 
 # Mutation
 def mutation():
@@ -99,5 +98,6 @@ def mutation():
     mod_arr = np.insert(muted_array, random_index2, random_value)
 
     return mod_arr
+
 
 print(mutation())
