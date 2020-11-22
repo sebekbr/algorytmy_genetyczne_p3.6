@@ -57,8 +57,8 @@ matrix = np.random.randint(-10, 10, size=(20, 8))
 # obliczanie wsp_dos i wpisywanie do macierzy
 def wsp_dost():
     wsp_dos = []
-    for i in range(len(matrix)):
-        test = np.multiply(matrix[i], constant_population)
+    for i in range(len(constant_matrix)):
+        test = np.multiply(constant_matrix[i], constant_population)
         # sumowanie wiersza
         b = np.sum(test, axis=1)
         wsp_dos.append(sum(abs(b - br)))
@@ -68,16 +68,16 @@ def wsp_dost():
 # print(wsp_dost())
 # print("----------------------------------")
 
-sorted_matrix = np.array([y for x, y in sorted(zip(wsp_dost(), matrix))])
+sorted_matrix = np.array([y for x, y in sorted(zip(wsp_dost(), constant_matrix))])
 
 # print(sorted_matrix)
 # print("----------------------------------")
 
+# punkt krzyżowania
+cross_point = int(len(constant_matrix[0]) / 2)
+
 # KRZYŻOWANIE
 def cross():
-    # punkt krzyżowania
-    cross_point = int(len(matrix[0]) / 2)
-
     crossed = []
     for i in range(0, len(sorted_matrix)-1, 2):
         crossed.append(np.append(sorted_matrix[i][:cross_point], sorted_matrix[i+1][cross_point:]))
@@ -86,4 +86,24 @@ def cross():
 
 
 print(cross())
+print(("--------------------------------"))
 
+# Mutowanie - DO POPRAWY!!!!!
+crossed = cross()
+randomIndex = rand.randint(0, len(crossed[0])-1)
+randomIndex2 = rand.randint(0, len(crossed[0])-1)
+randomValue = rand.randint(-10, 10)
+print("index 1: ", randomIndex)
+print("index 2: ", randomIndex2)
+print("random value: ", randomValue)
+print(crossed[19][randomIndex2])
+# crossed[19].pop(randomIndex2)
+# crossed[19].insert(randomIndex2, randomValue)
+
+
+mod_arr = np.delete(crossed[19], np.where(crossed[19] == randomIndex2))
+
+mod_arr = np.insert(mod_arr, randomIndex2, randomValue)
+# szybszy sposob
+# np.concatenate(mod_arr[:randomIndex2], randomValue, mod_arr[randomIndex2:])
+print(mod_arr)
