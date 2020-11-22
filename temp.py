@@ -54,3 +54,10 @@ print('Wartosc abs(b-br):\n', sum(b_minus_br))
 #     sorted_matrix = []
 #     for _, x in sorted(zip(wsp_dos,matrix)):
 #         sorted_matrix.append(np.array(x))
+
+
+# Usuwanie
+# muted_array = np.delete(crossed_array[19], random_index2)
+
+# Wstawianie
+# muted_array = np.insert(muted_array, random_index2, random_value)

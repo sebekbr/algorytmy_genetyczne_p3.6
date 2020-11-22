@@ -56,9 +56,9 @@ matrix = np.random.randint(-10, 10, size=(20, 8))
 # obliczanie wsp_dos i wpisywanie do macierzy
 def wsp_dost():
     wsp_dos = []
-    for i in range(len(constant_matrix)):
+    for i in range(len(matrix)):
         # Mnożenie
-        test = np.multiply(constant_matrix[i], constant_population)
+        test = np.multiply(matrix[i], population)
         # sumowanie wiersza
         b = np.sum(test, axis=1)
         wsp_dos.append(sum(abs(b - br)))
@@ -68,11 +68,11 @@ def wsp_dost():
 # print(wsp_dost())
 # print("----------------------------------")
 
-sorted_matrix = np.array([y for x, y in sorted(zip(wsp_dost(), constant_matrix))])
+sorted_matrix = np.array([y for x, y in sorted(zip(wsp_dost(), matrix))])
 
 
 # punkt krzyżowania
-cross_point = int(len(constant_matrix[0]) / 2)
+cross_point = int(len(matrix[0]) / 2)
 
 # KRZYŻOWANIE
 def cross():
@@ -83,27 +83,27 @@ def cross():
     return np.array(crossed)
 
 
-print(cross())
-print("--------------------------------")
+crossed_array = cross()
 
+print(cross())
 
 # Mutation
-def mutation():
-    crossed_array = cross()
-    print(crossed_array[19])
-    random_index = rand.randint(0, len(crossed_array[0])-1)
-    random_index2 = rand.randint(0, len(crossed_array[0])-1)
-    random_value = rand.randint(-10, 10)
+def mutation(loop_count):
+    for i in range(loop_count):
+        random_index = rand.randint(0, len(crossed_array[0])-1)
+        random_index2 = rand.randint(0, len(crossed_array[0])-1)
+        random_value = rand.randint(-10, 10)
 
-    # Usuwanie
-    # muted_array = np.delete(crossed_array[19], random_index2)
+        # Podmiana wartości
+        crossed_array[random_index][random_index2] = random_value
+        # return muted_array
+    return crossed_array
 
-    # Wstawianie
-    # muted_array = np.insert(muted_array, random_index2, random_value)
 
-    # Podmiana wartości
-    crossed_array[19][random_index2] = random_value
-    # return muted_array
-    return crossed_array[19]
-
-print(mutation())
+# print(matrix)
+# print("--------------")
+# print(sorted_matrix)
+# print("--------------")
+# print(cross())
+# print("--------------")
+print(mutation(4))
