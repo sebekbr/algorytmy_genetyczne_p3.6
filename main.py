@@ -51,9 +51,6 @@ matrix = np.random.randint(-10, 10, size=(20, 8))
 # print(matrix)
 # print("----------------------------------")
 
-# muted = []
-
-
 # obliczanie wsp_dos i wpisywanie do macierzy
 def wsp_dost():
     wsp_dos = []
@@ -90,16 +87,16 @@ print(("--------------------------------"))
 
 # Mutation
 def mutation():
-    crossed = cross()
-    random_index = rand.randint(0, len(crossed[0])-1)
-    random_index2 = rand.randint(0, len(crossed[0])-1)
+    crossed_array = cross()
+    random_index = rand.randint(0, len(crossed_array[0])-1)
+    random_index2 = rand.randint(0, len(crossed_array[0])-1)
     random_value = rand.randint(-10, 10)
 
     # Deleting item
-    mod_arr = np.delete(crossed[19], random_index2)
+    muted_array = np.delete(crossed_array[19], random_index2)
 
     # Inserting item
-    mod_arr = np.insert(mod_arr, random_index2, random_value)
+    mod_arr = np.insert(muted_array, random_index2, random_value)
 
     return mod_arr
 
