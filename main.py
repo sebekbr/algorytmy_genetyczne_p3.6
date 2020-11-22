@@ -4,7 +4,7 @@
 # TODO - sprawdz czy masz trafienie ( <0.5)
 # TODO - usuń najgorszych
 # krzyzuj
-# TODO - mutuj
+# mutuj
 # TODO - ew. dodaj nowych (jak usunąłeś wcześniej)
 # TODO - wylicz dodatkowe jak brakuje
 
@@ -94,13 +94,13 @@ def mutation():
     random_index = rand.randint(0, len(crossed[0])-1)
     random_index2 = rand.randint(0, len(crossed[0])-1)
     random_value = rand.randint(-10, 10)
-    # print("index 1: ", random_index)
-    # print("index 2: ", random_index2)
-    # print("random value: ", randomValue)
+
     # Deleting item
     mod_arr = np.delete(crossed[19], random_index2)
+
     # Inserting item
     mod_arr = np.insert(mod_arr, random_index2, random_value)
+
     return mod_arr
 
 print(mutation())
