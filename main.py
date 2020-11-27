@@ -1,4 +1,9 @@
 # Sebastian Brodziak - algorytmy genetyczne
+import numpy as np
+import random as rand
+import wsp_dost
+import cross
+import mutation
 # wylicz wspolczynniki dostosowania
 # posortuj wg wspolczynnika
 # TODO - sprawdz czy masz trafienie ( <0.5)
@@ -8,11 +13,6 @@
 # TODO - ew. dodaj nowych (jak usunąłeś wcześniej)
 # TODO - wylicz dodatkowe jak brakuje
 
-import numpy as np
-import random as rand
-import wsp_dost
-import cross
-import mutation
 
 # Populacja z wartościami losowymi
 population = np.random.randint(-10, 10, size=(8, 8))
@@ -28,7 +28,7 @@ wsp_dost()
 sorted_matrix = np.array([y for x, y in sorted(zip(wsp_dost(), matrix))])
 
 # KRZYŻOWANIE
-# crossed_array = cross()
+crossed_array = cross()
 print(cross())
 
 

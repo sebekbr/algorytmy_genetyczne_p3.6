@@ -1,5 +1,5 @@
 import numpy as np
-from main import sorted_matrix
+from main import sorted_matrix, matrix
 
 # KRZYŻOWANIE
 
