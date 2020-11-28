@@ -33,10 +33,8 @@ def wsp_dost():
     return np.array(wsp_dos)
 
 
-# print(wsp_dost())
-# print("----------------------------------")
-
 sorted_matrix = np.array([y for x, y in sorted(zip(wsp_dost(), matrix))])
+
 
 # KRZYŻOWANIE
 def cross():
