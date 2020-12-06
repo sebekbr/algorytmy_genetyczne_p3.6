@@ -1,10 +1,6 @@
 # Sebastian Brodziak - algorytmy genetyczne
-# wylicz wspolczynniki dostosowania
-# posortuj wg wspolczynnika
 # TODO - sprawdz czy masz trafienie ( <0.5)
 # TODO - usuń najgorszych
-# krzyzuj
-# mutuj
 # TODO - ew. dodaj nowych (jak usunąłeś wcześniej)
 # TODO - wylicz dodatkowe jak brakuje
 
@@ -32,8 +28,12 @@ def wsp_dost():
         wsp_dos.append(sum(abs(b - br)))
     return np.array(wsp_dos)
 
-
 sorted_matrix = np.array([y for x, y in sorted(zip(wsp_dost(), matrix))])
+
+
+# USUWANIE NAJGORSZYCH
+def del_individual_from_pop(del_individual_quantity):
+    return sorted_matrix[:-del_individual_quantity]
 
 
 # KRZYŻOWANIE
@@ -50,7 +50,7 @@ def cross():
 
 crossed_array = cross()
 
-print(cross())
+# print(cross())
 
 
 # MUTACJA
@@ -66,4 +66,4 @@ def mutation(loop_count):
     return crossed_array
 
 
-print(mutation(4))
+# print(mutation(4))

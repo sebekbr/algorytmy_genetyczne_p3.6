@@ -1,3 +1,16 @@
+# Od uruchomienia programu to idzie jakoś tak:
+# generowanie populacji
+# * wyliczenie współczynników dostosowania
+# sortowanie
+# sprawdzenie końca algorytmu
+# usuwanie najgorszych
+# krzyżowanie
+# mutowanie
+# dodanie nowych (w miejsce usuniętych)
+# powrót do *
+
+
+
 # równanie
 # a, b, c, d, e, f, g, h, x0, x1, x2, x3, x4, x5, x6, x7 = 0
 # eq = a*x0 + b*x1 + c*x2 + d*x3 + e*x4 + f*x5 + g*x6 + h*x7
@@ -95,3 +108,6 @@ print('Wartosc abs(b-br):\n', sum(b_minus_br))
 #                    [6, -6, 0, 1, -1, 5, -9, 7],
 #                    [-10, -2, -6, -9, 8, -9, 5, -6],
 #                    [0, -5, 0, 2, 5, 9, -10, 1]])
+
+
+# sorted_matrix_no_worst = np.delete(sorted_matrix, len(sorted_matrix)-1)
