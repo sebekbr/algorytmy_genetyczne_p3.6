@@ -39,7 +39,7 @@ def del_individual_from_pop(del_individual_quantity):
 # KRZYŻOWANIE
 def cross():
     # punkt krzyżowania
-    cross_point = int(len(matrix[0]) / 2)
+    cross_point = int(len(matrix[0])/2)
 
     crossed = []
     for i in range(0, len(sorted_matrix)-1, 2):
@@ -67,3 +67,4 @@ def mutation(loop_count):
 
 
 # print(mutation(4))
+np.random.randint(-10, 10, size=(1, 8))
