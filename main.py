@@ -8,10 +8,13 @@ import numpy as np
 import random as rand
 
 # Populacja z wartościami losowymi
-population = np.random.randint(-10, 10, size=(8, 8))
+# population = np.random.randint(-10, 10, size=(8, 8))
+def gen_population(a, b, c, d):
+    return np.random.randint(a, b, size=(c, d))
 
 br = np.array([10, 2, -5, 3, 6, -2, -4, 9])
 
+population = [-10, 10, 8, 8]
 
 # Macierz z wartościami losowymi
 matrix = np.random.randint(-10, 10, size=(20, 8))
@@ -22,7 +25,7 @@ def wsp_dost():
     wsp_dos = []
     for i in range(len(matrix)):
         # Mnożenie
-        test = np.multiply(matrix[i], population)
+        test = np.multiply(matrix[i], gen_population(population[0], population[1], population[2], population[3]))
         # sumowanie wiersza
         b = np.sum(test, axis=1)
         wsp_dos.append(sum(abs(b - br)))
