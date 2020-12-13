@@ -36,7 +36,7 @@
 # score_card = []
 # for i in range(8):
 #     for j in range(8):
-#         score_card.append(constant_population[j])
+#         score_card.append(constant_equation[j])
 #         score_card.append(br[j])
 #
 # # miejsce podziału genomu
@@ -64,9 +64,9 @@ print('Wartosc abs(b-br):\n', sum(b_minus_br))
 
 # sortowanie
 # def sort():
-#     sorted_matrix = []
+#     sorted_population = []
 #     for _, x in sorted(zip(wsp_dos,matrix)):
-#         sorted_matrix.append(np.array(x))
+#         sorted_population.append(np.array(x))
 
 
 # Usuwanie
@@ -76,7 +76,7 @@ print('Wartosc abs(b-br):\n', sum(b_minus_br))
 # muted_array = np.insert(muted_array, random_index2, random_value)
 
 # # populacja
-# constant_population = np.array([
+# constant_equation = np.array([
 #     [1, 2, -1, 3, -4, -1, -2, 2],
 #     [-3, -1, 2, -3, 4, -5, -2, -1],
 #     [1, -3, 9, 2, -8, 3, -2, 7],
@@ -88,7 +88,7 @@ print('Wartosc abs(b-br):\n', sum(b_minus_br))
 
 
 # # Stała macierz
-# constant_matrix = np.array([[2, -5, 3, 2, 5, 9, -10, 1],
+# constant_population = np.array([[2, -5, 3, 2, 5, 9, -10, 1],
 #                    [-6, 4, -4, -4, -1, 10, 1, -2],
 #                    [-5, -6, -8, -9, 2, 2, 7, 10],
 #                    [7, -5, -2, -4, -4, 7, 1, -1],
@@ -110,4 +110,4 @@ print('Wartosc abs(b-br):\n', sum(b_minus_br))
 #                    [0, -5, 0, 2, 5, 9, -10, 1]])
 
 
-# sorted_matrix_no_worst = np.delete(sorted_matrix, len(sorted_matrix)-1)
+# sorted_matrix_no_worst = np.delete(sorted_population, len(sorted_population)-1)
