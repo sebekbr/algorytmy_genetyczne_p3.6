@@ -3,10 +3,12 @@
 # TODO - usuń najgorszych
 # TODO - ew. dodaj nowych (jak usunąłeś wcześniej)
 # TODO - wylicz dodatkowe jak brakuje
-
 import numpy as np
 import random as rand
-
+import os
+import time
+def clear_screen():
+    os.system('cls' if os.name=='nt' else 'clear')
 # # równanie
 constant_equation = np.array([
     [1, 2, -1, 3, -4, -1, -2, 2],
@@ -107,17 +109,9 @@ def mutation(loop_count):
         # return muted_array
     return crossed_array
 
-
-# ---=== WŁAŚCIWY PROGRAM ===---
-print("Aktualna posortowana populacja:")
-print(sorting_population())
-
-print("\nPopulacja po usunięciu dwóch ostatnich:")
-print(del_individual_from_pop(2))
-
-print("\nPo dodaniu dwóch nowych:")
+# Dodawnie nowych osobników do populacji
 def replacing_last_gens():
-    temp = np.empty((2, 8), dtype=int)
+    temp = np.empty((2, 8), dtype=int) # pusta macierz
     new_population = del_individual_from_pop(2)
     for i in range(2): # generowanie 2 nowych osobników
         temp[i-1] = gen_population(equation_param[0], equation_param[1], 1, equation_param[3])
@@ -125,17 +119,34 @@ def replacing_last_gens():
     return arr
 
 
-print(replacing_last_gens())
-
-
 # Nowe współczynniki
 def new_wsp_dos():
     new_wsp_dost = []
-    for i in range(len(constant_population)):
-        test2 = np.multiply(constant_population[i], constant_equation)
+    arr = replacing_last_gens()
+
+    for i in range(len(arr)):
+        test2 = np.multiply(arr[i], constant_equation)
         # sumowanie wiersza
         b = np.sum(test2, axis=1)
         new_wsp_dost.append(sum(abs(b - br)))
+    return new_wsp_dost
+
+print("wspołczynniki", 10)
+print(wsp_dost())
+print("Nowe współczynniki: ")
+print(new_wsp_dos())
+
+# ---=== WŁAŚCIWY PROGRAM ===---
+# print("Aktualna posortowana populacja:")
+# print(sorting_population())
+#
+# print("\nPopulacja po usunięciu dwóch ostatnich:")
+# print(del_individual_from_pop(2))
+#
+# print("\nPo dodaniu dwóch nowych:")
+# print(replacing_last_gens())
+
+
 
 
 # print("\nPosortowane:")
