@@ -18,7 +18,6 @@ constant_equation = np.array([
     [4, 5, 8, -1, -6, 2, 2, -5],
     [-2, 2, 1, 6, 1, -4, -5, 2]])
 
-
 # # Stała macierz populacji
 constant_population = np.array([[2, -5, 3, 2, 5, 9, -10, 1],
                                 [-6, 4, -4, -4, -1, 10, 1, -2],
@@ -41,6 +40,11 @@ constant_population = np.array([[2, -5, 3, 2, 5, 9, -10, 1],
                                 [-10, -2, -6, -9, 8, -9, 5, -6],
                                 [0, -5, 0, 2, 5, 9, -10, 1]])
 
+br = np.array([10, 2, -5, 3, 6, -2, -4, 9])
+
+equation_param = [-10, 10, 8, 8]
+
+
 # Populacja z wartościami losowymi
 # equation_param = np.random.randint(-10, 10, size=(8, 8))
 
@@ -48,10 +52,6 @@ constant_population = np.array([[2, -5, 3, 2, 5, 9, -10, 1],
 def gen_population(a, b, c, d):
     return np.random.randint(a, b, size=(c, d))
 
-
-br = np.array([10, 2, -5, 3, 6, -2, -4, 9])
-
-equation_param = [-10, 10, 8, 8]
 
 # Macierz z wartościami losowymi
 # matrix = np.random.randint(-10, 10, size=(20, 8))
@@ -62,8 +62,6 @@ def wsp_dost():
     wsp_dos = []
     for i in range(len(constant_population)):
         # Mnożenie
-        # test = np.multiply(constant_population[i], gen_population(equation_param[0], equation_param[1],
-        #                                                       equation_param[2], equation_param[3]))
         test = np.multiply(constant_population[i], constant_equation)
         # sumowanie wiersza
         b = np.sum(test, axis=1)
@@ -71,32 +69,35 @@ def wsp_dost():
     return np.array(wsp_dos)
 
 # sortowanie
-sorted_population = np.array([y for x, y in sorted(zip(wsp_dost(), constant_population))])
+def sorting_population():
+    return np.array([y for x, y in sorted(zip(wsp_dost(), constant_population))])
 
 
 # USUWANIE NAJGORSZYCH
 def del_individual_from_pop(del_individual_quantity):
-    return sorted_population[:-del_individual_quantity]
+    sorted_population = sorting_population()
+    del_population = np.delete(sorted_population, np.s_[len(sorted_population)-del_individual_quantity:], axis=0)
+    return del_population
+    # return sorted_population[:-del_individual_quantity]
 
 
 # KRZYŻOWANIE
 def cross():
     # punkt krzyżowania
     cross_point = int(len(constant_population[0]) / 2)
-
     crossed = []
+    sorted_population = sorting_population()
 
-    for i in range(0, len(sorted_population) - 1, 2):
-        crossed.append(np.append(sorted_population[i][:cross_point], sorted_population[i + 1][cross_point:]))
-        crossed.append(np.append(sorted_population[i + 1][:cross_point], sorted_population[i][cross_point:]))
+    for index in range(0, len(sorted_population) - 1, 2):
+        crossed.append(np.append(sorted_population[index][:cross_point], sorted_population[index + 1][cross_point:]))
+        crossed.append(np.append(sorted_population[index + 1][:cross_point], sorted_population[index][cross_point:]))
     return np.array(crossed)
 
 
-crossed_array = cross()
-
 # MUTACJA
 def mutation(loop_count):
-    for i in range(loop_count):
+    crossed_array = cross()
+    for loop in range(loop_count):
         random_index = rand.randint(0, len(crossed_array[0])-1)
         random_index2 = rand.randint(0, len(crossed_array[0])-1)
         random_value = rand.randint(-10, 10)
@@ -107,43 +108,47 @@ def mutation(loop_count):
     return crossed_array
 
 
-# print(mutation(4))
-
-
-
-
-
 # ---=== WŁAŚCIWY PROGRAM ===---
-
-
-# gen_population(equation_param[0], equation_param[1], equation_param[2], equation_param[3])
 print("Aktualna posortowana populacja:")
-print(sorted_population)
+print(sorting_population())
 
 print("\nPopulacja po usunięciu dwóch ostatnich:")
 print(del_individual_from_pop(2))
 
 print("\nPo dodaniu dwóch nowych:")
-# sorted_population.append(gen_population(equation_param[0], equation_param[1], 1, equation_param[3]))
-for row in range(1,2):
-    new_population = np.insert(sorted_population, sorted_population[-row:],
-                               gen_population(equation_param[0], equation_param[1], 1, equation_param[3]), axis=0)
+def replacing_last_gens():
+    temp = np.empty((2, 8), dtype=int)
+    new_population = del_individual_from_pop(2)
+    for i in range(2): # generowanie 2 nowych osobników
+        temp[i-1] = gen_population(equation_param[0], equation_param[1], 1, equation_param[3])
+    arr = np.append(new_population,temp, axis=0) # dodanie osobników do populacji
+    return arr
 
-print(new_population)
+
+print(replacing_last_gens())
+
 
 # Nowe współczynniki
-new_wsp_dost = []
-for i in range(len(constant_population)):
-    test2 = np.multiply(constant_population[i], constant_equation)
-    # sumowanie wiersza
-    b = np.sum(test2, axis=1)
-    new_wsp_dost.append(sum(abs(b - br)))
-np.array(new_wsp_dost)
+def new_wsp_dos():
+    new_wsp_dost = []
+    for i in range(len(constant_population)):
+        test2 = np.multiply(constant_population[i], constant_equation)
+        # sumowanie wiersza
+        b = np.sum(test2, axis=1)
+        new_wsp_dost.append(sum(abs(b - br)))
 
-print("\nPosortowane:")
-print(np.array([y for x, y in sorted(zip(new_wsp_dost, new_population))]))
 
-# 20x8 to 20 osobników po 8 genów
+# print("\nPosortowane:")
+# print(np.array([y for x, y in sorted(zip(new_wsp_dost, new_population))]))
+
 # Usuwasz 2 to zostaje 18x8. Potem krzyżujesz, mutujesz i dodajesz dwóch.
-# Jak coś to pokaż co zrobiłeś.
 
+# print("Mnożenie z numpy")
+# print(wsp_dost())
+#
+# print("Zwykłe mnożenie:")
+#
+# for i in range(len(constant_population)):
+#     for j in range(len(constant_equation)):
+#         test = constant_population[i][j] * constant_equation
+#
