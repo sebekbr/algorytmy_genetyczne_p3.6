@@ -53,8 +53,8 @@ equation_param = [-10, 10, 8, 8]
 # equation_param = np.random.randint(-10, 10, size=(8, 8))
 
 
-def gen_population(a, b, c, d):
-    return np.random.randint(a, b, size=(c, d))
+def gen_population(min, max, rows, cols):
+    return np.random.randint(min, max, size=(rows, cols))
 
 
 # Macierz z wartościami losowymi
@@ -74,8 +74,8 @@ def wsp_dost(population):
 
 
 # sortowanie
-def sorting_population(population):
-    return np.array([y for x, y in sorted(zip(wsp_dost(), population))])
+def sorting_population(wsp_dos, population):
+    return np.array([y for x, y in sorted(zip(wsp_dos, population))])
 
 
 # USUWANIE NAJGORSZYCH
@@ -121,7 +121,7 @@ def replacing_last_gens(population):
 
 # ---=== WŁAŚCIWY PROGRAM ===---
 wsp_dos = wsp_dost(constant_population)
-sort_pop = sorting_population(constant_population)
+sort_pop = sorting_population(wsp_dos, constant_population)
 delete_from_pop = del_individual_from_pop(2, constant_population)
 crossed = cross(constant_population)
 mutated = mutation(4, crossed)
