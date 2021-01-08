@@ -120,6 +120,7 @@ def replacing_last_gens(population):
 # ---=== WŁAŚCIWY PROGRAM ===---
 mutation_counter = 0
 delete_counter = 2
+iteration_counter = 10000
 
 
 def main():
@@ -134,7 +135,7 @@ def main():
         pop = replacing_last_gens(mutated)
         i += 1
 
-        if i % 10000 == 0:
+        if i % iteration_counter == 0:
             print("Aktualny stan współczynników w iteracji", i)
             print(wsp_dos, "\n")
 
