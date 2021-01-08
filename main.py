@@ -1,17 +1,13 @@
 # Sebastian Brodziak - algorytmy genetyczne
+# Usuwasz 2 to zostaje 18x8. Potem krzyżujesz, mutujesz i dodajesz dwóch.
 # TODO - sprawdz czy masz trafienie ( <0.5)
 # TODO - usuń najgorszych
 # TODO - ew. dodaj nowych (jak usunąłeś wcześniej)
 # TODO - wylicz dodatkowe jak brakuje
+from operator import itemgetter
+
 import numpy as np
 import random as rand
-import os
-import time
-
-
-def clear_screen():
-    os.system('cls' if os.name == 'nt' else 'clear')
-
 
 # równanie
 constant_equation = np.array([
@@ -75,8 +71,10 @@ def wsp_dost(population):
 
 # sortowanie
 def sorting_population(wsp_dos, population):
-    return np.array([y for x, y in sorted(zip(wsp_dos, population))])
-
+    a = zip(population, wsp_dos)
+    b = sorted(a, key=itemgetter(1))
+    c = [x for x, y in b]
+    return c
 
 # USUWANIE NAJGORSZYCH
 def del_individual_from_pop(del_individual_quantity, sorted_population):
@@ -120,10 +118,26 @@ def replacing_last_gens(population):
 
 
 # ---=== WŁAŚCIWY PROGRAM ===---
-wsp_dos = wsp_dost(constant_population)
-sort_pop = sorting_population(wsp_dos, constant_population)
-delete_from_pop = del_individual_from_pop(2, constant_population)
-crossed = cross(constant_population)
-mutated = mutation(4, crossed)
-replace = replacing_last_gens(mutated)
-# Usuwasz 2 to zostaje 18x8. Potem krzyżujesz, mutujesz i dodajesz dwóch.
+mutation_counter = 0
+delete_counter = 2
+
+
+def main():
+    i = 0
+    pop = constant_population
+    while True:
+        wsp_dos = wsp_dost(pop)
+        sort_pop = sorting_population(wsp_dos, pop)
+        delete_from_pop = del_individual_from_pop(delete_counter, sort_pop)
+        crossed = cross(delete_from_pop)
+        mutated = mutation(mutation_counter, crossed)
+        pop = replacing_last_gens(mutated)
+        i += 1
+
+        if i % 10000 == 0:
+            print("Aktualny stan współczynników w iteracji", i)
+            print(wsp_dos, "\n")
+
+
+if __name__ == "__main__":
+    main()
