@@ -21,36 +21,37 @@ constant_equation = np.array([
     [-2, 2, 1, 6, 1, -4, -5, 2]])
 
 # Stała macierz populacji
-constant_population = np.array([[2, -5, 3, 2, 5, 9, -10, 1],
-                                [-6, 4, -4, -4, -1, 10, 1, -2],
-                                [-5, -6, -8, -9, 2, 2, 7, 10],
-                                [7, -5, -2, -4, -4, 7, 1, -1],
-                                [8, -10, 1, -9, 5, -7, 0, 9],
-                                [-3, -9, 5, 10, 2, 2, -9, -5],
-                                [-8, -3, 10, 2, 3, 7, -9, 1],
-                                [9, 7, -9, 1, 5, -6, -4, 5],
-                                [3, 10, 1, 4, 9, 5, -6, 1],
-                                [-9, 6, 8, 4, -10, 4, -3, 4],
-                                [7, -3, -5, 3, 9, 8, 0, 3],
-                                [-3, 0, 10, -2, -1, -8, 9, 8],
-                                [4, -1, 2, 0, -6, 6, -6, 3],
-                                [9, 3, 6, 6, 4, -4, 10, -1],
-                                [8, 8, 10, -3, -4, 0, -10, -5],
-                                [-8, 0, 10, 5, 2, 1, -3, -7],
-                                [5, -4, 9, -6, 0, -5, -9, -9],
-                                [6, -6, 0, 1, -1, 5, -9, 7],
-                                [-10, -2, -6, -9, 8, -9, 5, -6],
-                                [0, -5, 0, 2, 5, 9, -10, 1]])
+# constant_population = np.array([[2, -5, 3, 2, 5, 9, -10, 1],
+#                                 [-6, 4, -4, -4, -1, 10, 1, -2],
+#                                 [-5, -6, -8, -9, 2, 2, 7, 10],
+#                                 [7, -5, -2, -4, -4, 7, 1, -1],
+#                                 [8, -10, 1, -9, 5, -7, 0, 9],
+#                                 [-3, -9, 5, 10, 2, 2, -9, -5],
+#                                 [-8, -3, 10, 2, 3, 7, -9, 1],
+#                                 [9, 7, -9, 1, 5, -6, -4, 5],
+#                                 [3, 10, 1, 4, 9, 5, -6, 1],
+#                                 [-9, 6, 8, 4, -10, 4, -3, 4],
+#                                 [7, -3, -5, 3, 9, 8, 0, 3],
+#                                 [-3, 0, 10, -2, -1, -8, 9, 8],
+#                                 [4, -1, 2, 0, -6, 6, -6, 3],
+#                                 [9, 3, 6, 6, 4, -4, 10, -1],
+#                                 [8, 8, 10, -3, -4, 0, -10, -5],
+#                                 [-8, 0, 10, 5, 2, 1, -3, -7],
+#                                 [5, -4, 9, -6, 0, -5, -9, -9],
+#                                 [6, -6, 0, 1, -1, 5, -9, 7],
+#                                 [-10, -2, -6, -9, 8, -9, 5, -6],
+#                                 [0, -5, 0, 2, 5, 9, -10, 1]])
 br = np.array([10, 2, -5, 3, 6, -2, -4, 9])
 equation_param = [-10, 10, 8, 8]
 
 
 # Populacja z wartościami losowymi
-# equation_param = np.random.randint(-10, 10, size=(8, 8))
+def rand_pop(x):
+    return np.random.rand(x, 8)
 
 
-def gen_population(min, max, rows, cols):
-    return np.random.randint(min, max, size=(rows, cols))
+def gen_population(rows, cols):
+    return np.random.rand(rows, cols)
 
 
 # Macierz z wartościami losowymi
@@ -112,20 +113,21 @@ def replacing_last_gens(population):
     # new_population = del_individual_from_pop(2)
     temp = np.empty((2, 8), dtype=int) # pusta macierz
     for i in range(2): # generowanie 2 nowych osobników
-        temp[i-1] = gen_population(equation_param[0], equation_param[1], 1, equation_param[3])
+        temp[i-1] = gen_population(1, equation_param[3])
     arr = np.append(population, temp, axis=0) # dodanie osobników do populacji
     return arr
 
 
 # ---=== WŁAŚCIWY PROGRAM ===---
-mutation_counter = 0
+mutation_counter = 4
 delete_counter = 2
 iteration_counter = 10000
 
 
 def main():
     i = 0
-    pop = constant_population
+    pop = rand_pop(20)
+    print(pop)
     while True:
         wsp_dos = wsp_dost(pop)
         sort_pop = sorting_population(wsp_dos, pop)
